@@ -5,12 +5,18 @@ import java.util.ArrayList;
 public class Cliente {
 
 	private ArrayList<Item> carro;
+	private int id;
 
-	public Cliente() {
+	public Cliente(int id) {
 		super();
+		this.id = id;
 		this.carro = new ArrayList<>();
 	}
 	
+	public int getId() {
+		return id;
+	}
+
 	public void addCarro(Item item) {
 		this.carro.add(item);
 	}

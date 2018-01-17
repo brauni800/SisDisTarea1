@@ -2,6 +2,7 @@ package controller;
 
 import java.util.ArrayList;
 
+import model.Cajero;
 import model.Cliente;
 import model.Item;
 
@@ -27,24 +28,28 @@ public class Tienda {
 		/**
 		 * Se crean los clientes y se agregan items a sus carros de compra
 		 */
-		Cliente sam = new Cliente();
+		Cliente sam = new Cliente(1);
 		sam.addCarro(arroz);
 		sam.addCarro(frijol);
 		sam.addCarro(leche);
 		sam.addCarro(huevo);
 		sam.addCarro(pan);
 		
-		Cliente pepe = new Cliente();
+		Cliente pepe = new Cliente(2);
 		pepe.addCarro(pan);
 		pepe.addCarro(zanahoria);
 		pepe.addCarro(maiz);
 		pepe.addCarro(sal);
 		
-		Cliente luis = new Cliente();
+		Cliente luis = new Cliente(3);
 		luis.addCarro(huevo);
 		luis.addCarro(manzana);
 		luis.addCarro(azucar);
 		luis.addCarro(leche);
+		
+		Cliente martha = new Cliente(4);
+		martha.addCarro(arroz);
+		martha.addCarro(zanahoria);
 		
 		/**
 		 * Se agregan los clientes a la lista de clientes
@@ -52,11 +57,20 @@ public class Tienda {
 		clientes.add(sam);
 		clientes.add(luis);
 		clientes.add(pepe);
+		clientes.add(martha);
 		
 		/**
 		 * Funcion que se encarga de imprimir los resultados en la consola
 		 */
 		print(clientes);
+		
+		Cajero cajero1 = new Cajero(1, clientes);
+		Cajero cajero2 = new Cajero(2, clientes);
+		Cajero cajero3 = new Cajero(3, clientes);
+		
+		cajero1.start();
+		cajero2.start();
+		cajero3.start();
 	}
 	
 	public static void print(ArrayList<Cliente> clientes) {
@@ -73,6 +87,6 @@ public class Tienda {
 			tiempoTotal += tiempoCompra;
 			gastoTotal += gastoCliente;
 		}
-		System.out.println("\nEn total los clientes tardaron " + tiempoTotal + " segundos y el ingreso total fue de " + gastoTotal + " pesos");
+		System.out.println("\nEn total los clientes tardaron " + tiempoTotal + " segundos y el ingreso total fue de " + gastoTotal + " pesos\n");
 	}
 }
