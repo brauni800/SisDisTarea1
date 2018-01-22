@@ -17,7 +17,7 @@ public class Cajero extends Thread {
 	@Override
 	public void run() {
 		super.run();
-		for (int i = 0; i < this.clientes.size(); i++) {
+		for (int i = 0; i <= this.clientes.size(); i++) {
 			Cliente cliente = this.clientes.remove(0);
 			System.out.println("El cliente " + cliente.getId() + " se atendió en la caja " + this.id);
 		}

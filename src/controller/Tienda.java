@@ -51,13 +51,46 @@ public class Tienda {
 		martha.addCarro(arroz);
 		martha.addCarro(zanahoria);
 		
+		Cliente rodrigo = new Cliente(5);
+		rodrigo.addCarro(leche);
+		rodrigo.addCarro(zanahoria);
+		rodrigo.addCarro(huevo);
+		
+		Cliente angel = new Cliente(6);
+		angel.addCarro(sal);
+		angel.addCarro(pan);
+		
+		Cliente sergio = new Cliente(7);
+		sergio.addCarro(maiz);
+		sergio.addCarro(frijol);
+		
+		Cliente rudy = new Cliente(8);
+		rudy.addCarro(frijol);
+		
+		Cliente humberto = new Cliente(9);
+		humberto.addCarro(leche);
+		humberto.addCarro(azucar);
+		humberto.addCarro(arroz);
+		
+		Cliente armando = new Cliente(10);
+		armando.addCarro(zanahoria);
+		armando.addCarro(azucar);
+		armando.addCarro(manzana);
+		armando.addCarro(maiz);
+		
 		/**
 		 * Se agregan los clientes a la lista de clientes
 		 */
 		clientes.add(sam);
-		clientes.add(luis);
 		clientes.add(pepe);
+		clientes.add(luis);
 		clientes.add(martha);
+		clientes.add(rodrigo);
+		clientes.add(angel);
+		clientes.add(sergio);
+		clientes.add(rudy);
+		clientes.add(humberto);
+		clientes.add(armando);
 		
 		/**
 		 * Funcion que se encarga de imprimir los resultados en la consola
@@ -83,7 +116,7 @@ public class Tienda {
 				gastoCliente += cliente.getItem(i).getPrecio();
 				tiempoCompra += cliente.getItem(i).getTiempoProceso();
 			}
-			System.out.println("El cliente tardo " + tiempoCompra + " segundos y gasto " + gastoCliente + " pesos");
+			System.out.println("El cliente " + cliente.getId() + " tardo " + tiempoCompra + " segundos y gasto " + gastoCliente + " pesos");
 			tiempoTotal += tiempoCompra;
 			gastoTotal += gastoCliente;
 		}
