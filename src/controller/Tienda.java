@@ -2,6 +2,7 @@ package controller;
 
 import java.util.ArrayList;
 
+import model.Bolsa;
 import model.Cajero;
 import model.Cliente;
 import model.Item;
@@ -108,18 +109,18 @@ public class Tienda {
 	
 	public static void print(ArrayList<Cliente> clientes) {
 		int tiempoTotal = 0;
-		double gastoTotal = 0.0;
+		Bolsa bolsaTotal = new Bolsa();
 		for (Cliente cliente : clientes) {
-			double gastoCliente = 0.0;
 			int tiempoCompra = 0;
+			Bolsa bolsaCliente = new Bolsa();
 			for (int i = 0; i < cliente.sizeCarro(); i++) {
-				gastoCliente += cliente.getItem(i).getPrecio();
+				bolsaCliente.depositar(cliente.getItem(i).getPrecio());
 				tiempoCompra += cliente.getItem(i).getTiempoProceso();
 			}
-			System.out.println("El cliente " + cliente.getId() + " tardo " + tiempoCompra + " segundos y gasto " + gastoCliente + " pesos");
+			System.out.println("El cliente " + cliente.getId() + " tardo " + tiempoCompra + " segundos y gasto " + bolsaCliente.consulta() + " pesos");
 			tiempoTotal += tiempoCompra;
-			gastoTotal += gastoCliente;
+			bolsaTotal.depositar(bolsaCliente);
 		}
-		System.out.println("\nEn total los clientes tardaron " + tiempoTotal + " segundos y el ingreso total fue de " + gastoTotal + " pesos\n");
+		System.out.println("\nEn total los clientes tardaron " + tiempoTotal + " segundos y el ingreso total fue de " + bolsaTotal.consulta() + " pesos\n");
 	}
 }
